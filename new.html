@@ -1,0 +1,72 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>newLIB测试</title>
+</head>
+
+<body>
+<link href="template/horizontal/style.css" rel="stylesheet" type="text/css" />
+<!--<script type="text/javascript" charset="utf-8" src="tools/BCore.ts.min.js"></script>-->
+<script type="text/javascript" charset="utf-8" src="Modules/Core/trank/BCore.js"></script>
+<!--<script type="text/javascript" charset="utf-8" src="Modules/Core/trank/CompatiblePart.js"></script>-->
+<script type="text/javascript" charset="utf-8" src="Modules/Components/trank/Check.js"></script>
+<script type="text/javascript" charset="utf-8" src="Modules/Components/trank/Sid.js"></script>
+<script type="text/javascript" charset="utf-8" src="Modules/Components/trank/Input.js"></script>
+<script type="text/javascript" charset="utf-8" src="Modules/Components/trank/Recommend.js"></script>
+<script type="text/javascript" charset="utf-8" src="Modules/Components/trank/NetUser.js"></script>
+<script type="text/javascript" charset="utf-8" src="Modules/Components/trank/UI.js"></script>
+<script type="text/javascript" charset="utf-8" src="Modules/Components/trank/Tools.js"></script>
+<script type="text/javascript" charset="utf-8" src="Modules/Components/trank/Parse.js"></script>
+<script type="text/javascript" charset="utf-8" src="Modules/Components/trank/Cache.js"></script>
+<script type="text/javascript" charset="utf-8" src="Modules/Products/trank/InputEx.js"></script>
+<script type="text/javascript">
+new BCore(function(){
+	var Request = BCore.Request;
+	var Recommend = BCore.recommends.Recommend;
+	var Visit = BCore.inputs.Visit;
+	var PageView	= BCore.inputs.PageView;
+	
+	
+	//this.options.surl = "https://new.baifendian.com/";
+	this.options.cid = "Capitest";
+	this.options.uid = "user";
+	
+	alert(this.options.gid);
+	this.send(new PageView());
+	
+	this.send(new Visit(1));
+	var uvb =  new Recommend("RecVUB",9);
+	uvb.iid = 1;
+	this.send(uvb,function(json){
+		// alert(json);
+	});
+	
+	
+	var od = new BCore.inputs.Order("871825");
+	od.total = 1000;
+	od.express = "德邦物流";
+	od.address = "北京市 xx区 xx街 xx号";
+	for(var i=0;i<10;i++){
+		od.push({"i":"i"+i,"p":"p"+i,"n":i});
+	}
+	this.send(od);
+	
+	var rept = new BCore.tools.Repeat();
+	var str1 = rept.dedup([{"iid":"1"}, {"iid":"2"}, {"iid":"3"}]);
+	var str2 = rept.dedup([{"iid":"2"}, {"iid":"3"}, {"iid":"4"}]);
+	console.log(str1);
+	console.log(str2);
+	var str3 = rept.dedup([1, 2, 3]);
+	var str4 = rept.dedup([2, 3, 4]);
+	console.log(str3);
+	console.log(str4);
+	
+	var Tools = BCore.tools.Tools;
+	var price = Tools.toNumber("￥120.00");
+	console.log(price);
+	
+});
+</script>
+</body>
+</html>

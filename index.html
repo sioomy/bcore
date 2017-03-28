@@ -1,0 +1,482 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>newLIB测试</title>
+</head>
+
+<body>
+<link href="template/horizontal/style.css" rel="stylesheet" type="text/css" />
+
+<!--<script type="text/javascript" charset="utf-8" src="Modules/Core/trank/BCore.packsinglehigh.js"></script>-->
+<script type="text/javascript" charset="utf-8" src="Modules/Core/trank/BCore.js"></script>
+<!--<script type="text/javascript" charset="utf-8" src="Modules/Components/trank/Check.js"></script>
+<script type="text/javascript" charset="utf-8" src="Modules/Components/trank/Sid.js"></script>
+<script type="text/javascript" charset="utf-8" src="Modules/Components/trank/Input.js"></script>
+<script type="text/javascript" charset="utf-8" src="Modules/Components/trank/Recommend.js"></script>
+<script type="text/javascript" charset="utf-8" src="Modules/Components/trank/NetUser.js"></script>
+<script type="text/javascript" charset="utf-8" src="Modules/Components/trank/UI.js"></script>
+<script type="text/javascript" charset="utf-8" src="Modules/Components/trank/Parse.js"></script>-->
+<!--<script type="text/javascript" charset="utf-8" src="Modules/Components/trank/Tools.js"></script>
+<script type="text/javascript" charset="utf-8" src="Modules/Products/trank/Blend.js"></script>
+<script type="text/javascript" charset="utf-8" src="Modules/Products/trank/Bae.js"></script>
+<script type="text/javascript" charset="utf-8" src="Modules/Products/trank/Bae.PackSingle.js"></script>-->
+<!--<script type="text/javascript" charset="utf-8" src="Modules/Caller/trank/DefaultCallerGoods.js"></script>-->
+<script type="text/javascript" charset="utf-8" src="Modules/Components/trank/Encrypt.js"></script>
+
+
+<div style="display:none">
+<script type="text/javascript">
+//var arr = new Array(1,2,3,4,5,6,7);
+//delete arr[1];
+//alert(arr.join("&"));
+
+
+
+//下面是BCore中不使用FLASH和SID的情况直接发送的示例
+//(function(window){
+//	//导入库
+//	var RecBAB		= $Core.recommends.RecBAB;
+//	
+//	var BCoreIns 	= new $Core();
+//	
+//	//参数设置
+//	BCoreIns.options.cid = "bfdtest200";
+//	BCoreIns.options.uid = "bfd_uid";
+//	BCoreIns.options.sid = "bfd_sid";
+//	BCoreIns.options.surl = "http://192.168.11.54:8009/"
+//	
+//	//BCoreIns.push(new RecBAB("345",12),"bab");
+//	BCoreIns.push(new RecBAB("345",12));
+//	BCoreIns.invoke();
+//	BCoreIns.setCallBack(function(json){
+//		
+//		//买了还买了
+//		if(json.bab){
+//			//买了还买了展示逻辑
+//		}
+//	
+//	});
+//
+//})(window);
+
+
+////下面是正常的发送代码（由于上面已经填写过CID和UID，所以不必再次填写，因为options静态属性）
+//new $Core(function(){
+//	var RecBAB		= $Core.recommends.RecBAB;
+//	
+//	this.push(new RecBAB("345",12));
+//	this.invoke();
+//
+//});
+//
+//
+//
+//用于测试
+
+
+
+//new $Core(function(){
+//	
+//	//-------------下面是逻辑代码
+//	//导入输入请求
+//	var JObject	= $Core.inputs.JObject;
+//	var AddItem	= $Core.inputs.AddItem;
+//	var Visit			= $Core.inputs.Visit;
+//	var FeedBack 	= $Core.inputs.FeedBack;
+//	var AddCart	= $Core.inputs.AddCart;
+//	var AddFav 	= $Core.inputs.AddFav;
+//	var AddUser	= $Core.inputs.AddUser;
+//	var Buy			= $Core.inputs.Buy;
+//	var Review		= $Core.inputs.Review
+//	var RmCart		= $Core.inputs.RmCart;
+//	var RmFav		= $Core.inputs.RmFav;
+//	var RmItem  	= $Core.inputs.RmItem;
+//	var RmUser 	= $Core.inputs.RmUser;
+//	var Search  	= $Core.inputs.Search;
+//	
+//	//导入推荐请求
+//	var Filter 		= $Core.recommends.Filter;
+//	var connectFilter= $Core.recommends.connectFilter;
+//	var HotBuy 	= $Core.recommends.HotBuy;
+//	var HotVisit 	= $Core.recommends.HotVisit;
+//	var RecByCart	= $Core.recommends.RecByCart;
+//	var RecBAB 	= $Core.recommends.RecBAB;
+//	var RecFBT 	= $Core.recommends.RecFBT;
+//	var RecForUser= $Core.recommends.RecForUser;
+//	var RecSimiI 	= $Core.recommends.RecSimiI;
+//	var RecVAV 	= $Core.recommends.RecVAV;
+//	var RecVUB 	= $Core.recommends.RecVUB;
+//	
+//	var Response 	= $Core.responses.Response;
+//	
+//	var GetUserVH 	= $Core.netuser.GetUserVH;
+//	var GetUserBH 	= $Core.netuser.GetUserBH;
+//	
+//	//引入Banner
+//	var BFDBanner = $Core.ui.BFDBanner;
+//	var FloatBanner = $Core.ui.FloatBanner;
+//
+//
+//	
+//	
+//	//导入BAE库
+////	var PAGE_TYPE	= $Core.bae.PAGE_TYPE;
+////	var baeOpt		= $Core.bae.options;
+//	
+//	
+//	//需要的变量
+////	var _type 		= PAGE_TYPE.GOODS;
+//	var _pname 		= "LohashillBB裸妆霜";//产品名称
+//	var _categore 	= "化妆用品";//类别名称
+//	var _customid		= "Capitest";//"bfdtest200";//客户ID
+//	var _uid				= "bfd_test_user";//用户名
+//	var _itemid			= "9";//"181";
+//	var _price			= 59;
+//	var _brand			= "Lohashill";
+//	var _img			= "http://www.baifendian.com/ecshop/images/201005/goods_img/181_G_1273013920764.jpg";
+//	var _url				= "http://www.baifendian.com/ecshop/goods.php?id=181";
+//	//var _reqid			= null;
+//	var _reqid			= "626664626a63342020202020202020200000000c0000542d4edc4671VUB";
+//	var _isnew			= true;//是否为新品
+//	
+//	//this.options.surl = "http://192.168.11.54/";
+//	
+//	
+//	
+//	//bae设置
+////	baeOpt.type 		= _type;
+////	baeOpt.signature 	= _pname; 
+////	baeOpt.parent 		= _categore;
+//	
+//	//初始化页面参数
+//	this.options.cid 	= _customid;
+//	this.options.uid	= _uid;
+//	
+//	this.options.ignore_domain="1";
+//	
+////	this.visitPage(BCore.bae.PAGE_TYPE.HOME);
+//	//this.invoke();
+//	var rfmt 			= new JObject();
+//	rfmt.iid		="$iid";
+//	rfmt.name	="$name";
+//	rfmt.price	="$attr.price";
+//	rfmt.url		="$url";
+//	rfmt.img		="$img";
+//	this.options.fmt=rfmt.toString();
+//	
+//	//this.options.fmt='{"iid":$iid,"name":$name,"price":$attr.price,"url":$url}';
+//	
+//	//fmtarr = ["$iid", "$name", "$attr.price", "$url"];
+//	//this.options.fmt=rfmt.toString(fmtarr);
+//	
+//	
+//	
+//	
+//	
+//	
+//	
+//	//添加商品
+//	var json 			= new JObject();
+//	json.price 		= _price;
+//	json.brand 		= _brand;
+//	json.isnew 		= _isnew;
+//	
+//	var add_item 	= new AddItem(_itemid);
+//	add_item.attr 	= json.toString();
+//	add_item.img 	= _img;
+//	add_item.name 	= _pname;
+//	add_item.pid 	= [_categore];
+//	add_item.url 	= _url;
+//	this.push(add_item);
+//	
+//	
+//	//if(_reqid == null){
+//		//浏览商品
+//		this.push(new Visit(_itemid));
+//	//}else{
+//		//浏览推荐的商品
+//		this.push(new FeedBack(_itemid,_reqid));
+//		
+//		var fb = new FeedBack(_itemid,_reqid);
+//		fb.sc = -1;
+//		this.push(fb);
+//	//}
+//	
+//	//添加购物车
+//	//this.push(new AddCart(_itemid));
+//	//
+//	//var addcart = new AddCart(_itemid);
+//	//addcart.qua = 2;
+//	//this.push(addcart);
+//	
+//	var ac1 = new AddCart();
+//	ac1.push("123",2,15);
+//	this.push(ac1);
+//
+//	//this.push(new AddCart());
+//	
+//	
+//		//删除购物车
+//	//this.push(new RmCart());
+//	
+//	var rc = new RmCart("354");
+//	rc.push("123",2,15);
+//	this.push(rc,"rc");
+//	
+//	
+//	
+//	//加入收藏
+//	this.push(new AddFav(_itemid));
+//	
+//	//添加用户
+//	this.push(new AddUser(1));
+//	
+//	var user = new AddUser("2");
+//	user.name = "testuser";
+//	var userattr = new JObject();
+//	userattr.location = "北京";
+//	userattr.age = 23;
+//	user.attr = userattr.toString();
+//	this.push(user,"u1");
+//	
+//	this.visitPage();
+//
+//	
+//	//购买
+//	var p1 = new Buy("871825", 1000);
+//	p1.express = "德邦物流";
+//	p1.address = "北京市 xx区 xx街 xx号";
+//	p1.push("123",15,2);
+//	p1.push("456",16,3);
+//	this.push(p1);
+//	
+//	
+//	this.push(new Review(_itemid));
+//	
+//	var review = new Review(_itemid);
+//	review.cont = "东西不错，<b>赞一个</b>";
+//	review.sc = 5;
+//	
+//	
+//	this.push(new RmFav(_itemid));
+//	
+//	this.push(new RmItem(_itemid));
+//	
+//	var ri = new RmItem(_itemid);
+//	ri.del = true;
+//	this.push(ri);
+//	
+//	this.push(new RmUser(1));
+//	
+//	var ru = new RmUser(1);
+//	ru.del = true;
+//	this.push(ru);
+//	
+//	this.push(new Search("书"));
+//	
+//	
+//	//获取用户浏览历史
+//	this.push(new GetUserVH(10));
+//	this.push(new GetUserBH(10));
+//
+//	
+//	//var filter  = new Filter();
+//	//filter.EQ = {iid:["24189"]};
+//	var filterCat  = new Filter("cat","in",["3","4","5"]);
+//	var filterPrice  = new Filter("attr.price",">=",1000);
+//	var cfiterconnectFilter = connectFilter(filterCat.toString(),"and",filterPrice.toString()); 
+//	////[$iid,%20$name,%20$attr.price,%20$url]
+//	
+//	
+//	//提交请求
+//	this.invoke();
+//	var rec_hb 	= new HotBuy(12);
+//	rec_hb.cat	= {"饮料":1,"图书":3};
+//	rec_hb.dat	= 7;
+//	rec_hb.flt	= cfiterconnectFilter;
+//	rec_hb.rad	= 0.5;
+//	this.push(rec_hb,"rec_hb");
+//	
+//	var rec_hv 	= new HotVisit(12);
+//	rec_hv.cat	= {"饮料":1,"图书":3};
+//	rec_hv.dat	= 7;
+//	rec_hv.flt	= cfiterconnectFilter;
+//	rec_hv.rad	= 0.5;
+//	this.push(rec_hv,"rec_hv");
+//	
+//	var rec_bc 	= new RecByCart([_itemid],12);
+//	rec_bc.flt	= cfiterconnectFilter;
+//	rec_bc.typ	= "visit";
+//	this.push(rec_bc,"rec_bc");
+//	
+//	var rec_fbt 	= new RecFBT([_itemid],12);
+//	rec_fbt.flt	= cfiterconnectFilter;
+//	this.push(rec_fbt,"rec_fbt");
+//	
+//	var rec_fu 	= new RecForUser(1);
+//	rec_fu.flt	= cfiterconnectFilter;
+//	rec_fu.typ	= "buy";
+//	this.push(rec_fu,"rec_fu");
+//	
+//	var rec_si 	= new RecSimiI([_itemid],12);
+//	rec_si.flt	= cfiterconnectFilter;
+//	rec_si.typ	= "tag";
+//	this.push(rec_si,"rec_si");
+//	
+//	var rec_vub 	= new RecVUB([_itemid],12);
+//	rec_vub.flt	= cfiterconnectFilter;
+//	this.push(rec_vub,"rec_vub");
+//	
+//	var rec_bab 	= new RecBAB([_itemid],12);
+//	rec_bab.flt	= cfiterconnectFilter;
+//	this.push(rec_bab,"rec_bab");
+//	
+//	var rec_vav 	= new RecVAV([_itemid],12);
+//	//rec_vav.flt	= cfiterconnectFilter;
+//	this.push(rec_vav,"rec_vav");
+//	
+//	
+//	this.invoke();
+//	
+//	
+//	//提交请求
+//	this.invoke(new RecVAV([_itemid],12),function(json){
+//			alert("ssss:"+json);
+//	});
+//	
+//	this.invoke(new RecVAV([_itemid],12),function(json){
+//		//alert(json);
+//	});
+//	this.invoke(new RecVAV([_itemid],12));
+//	
+//	
+//	//这里是回调函数，用于展示界面
+//	this.setCallBack(function(json){
+//		//var i = 0;
+//		//for(var key in json){
+//		//	alert(i+"" +key);
+//		//}
+//	
+//		//看了还看了
+//		if(json.rec_vav){
+//		
+//			//alert(json.rec_vav);
+//		
+//			var rec_vav = new Response(json.rec_vav);
+//			//浏览还浏览过的展示逻辑
+//			var banner = new BFDBanner("bfdbanner1", "浏览该商品的用户还浏览过", json.rec_vav);
+//			banner.create();
+//			
+//			
+//			//floatbanner
+//			var fbanner = new FloatBanner();
+//			fbanner.push("浏览该商品的用户还浏览过", json.rec_vav);
+//			fbanner.create();
+//			
+//		}
+//		
+//		//买了还买了
+//		if(json.rec_bab){
+//			//alert(json.rec_bab);
+//			//买了还买了展示逻辑
+//		}
+//	
+//	});
+//	
+//	new BCore(function(){
+//		//alert(this.options.uid);
+//	});
+//});
+
+
+
+new BCore(function(){
+
+	//this.options.cid = ""
+
+	//alert(this.static.index);
+	////for(var i=0;i<BCore.instances.length;i++){
+	////	alert(BCore.instances[i].instance_id);
+	////}
+	//
+	//alert(this.static.pageReady);
+	//
+	//var xx = new BCore();
+	//
+	//alert(xx.static.pageReady);
+	//
+	//alert("aa:"+(this.static.pageReady===xx.static.pageReady));
+	
+	
+	var str = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx";
+	var rst = BCore.encrypt.Encrypt.b64_md5(str);
+	var len = rst.length;
+	alert(rst+":"+len);
+	
+});
+//new $Core(function(){
+//	var FeedBack 	= $Core.inputs.FeedBack;
+//	var RecVAV 	= $Core.recommends.RecVAV;
+//
+////alert(1);
+//	//var json  = new $Core.inputs.JObject();
+//	//json.localtion = "北京";
+//	//json.age  = 23;
+//	//document.write(json.toString());//{"localtion":"北京","age":23}
+//	this.visitPage();
+//	this.invoke();
+//	
+//	
+//	function callback(json){
+//		//alert(json)
+//	}
+//	
+//	//提交请求
+//	this.invoke(new FeedBack("111","2222"),callback);
+//	
+//	
+//	
+////
+////
+////	var CloudBanner = $Core.ui.CloudBanner;
+////	this.options.cid="Cyoka";
+////	this.options.uid = this.options.sid;
+////	this.visitPage();//注意的是这里需要用到BAE的模块
+////	this.options.api = "Pv.do";
+////	this.invoke();
+////	this.options.api = "Pack.do";
+////	
+////	var flt = new $Core.recommends.Filter("cat",">=","nihao");
+////	
+////	var rec4tag = new BCore.recommends.RecSimiI(window.location.href,3);
+////	rec4tag.typ = "tag";
+////	rec4tag.flt = flt.toString();
+////	this.push(rec4tag,"rec4tag");
+////	this.invoke();
+////	//这里是回调函数，用于展示界面
+////	this.setCallBack(function(json){
+////		//基于相似度进行推荐
+////		if(json.rec4tag){
+////			var newbanner = new CloudBanner(json, "rec_fu");
+////			newbanner.create();
+////			newbanner.init();
+////		}
+////	
+////	});
+////	
+////	//创建css文件
+////	var url = "http://static.baifendian.com/themes/float/style.css";
+////	var link = document.createElement( 'link' );
+////	link.setAttribute( 'href', url );
+////	link.setAttribute( 'charset', "utf-8" );
+////	link.setAttribute( 'rel', "stylesheet" );
+////	link.setAttribute( 'type', "text/css" );
+////	document.getElementsByTagName( 'head' )[ 0 ].appendChild( link );
+//});
+</script>
+<link href="http://api.baifendian.com/service/ecshop/template/float/float.css" charset="utf-8" rel="stylesheet" type="text/css" />
+</div>
+<div id="banner_vav"></div>
+</body>
+</html>
